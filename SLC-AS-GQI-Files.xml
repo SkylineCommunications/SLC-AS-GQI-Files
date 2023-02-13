@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DMSScript options="272" xmlns="http://www.skyline.be/automation">
+	<Name>GQI_Files</Name>
+	<Description></Description>
+	<Type>Automation</Type>
+	<Author>SKYLINE2\Matthijs</Author>
+	<CheckSets>FALSE</CheckSets>
+	<Folder>GQI</Folder>
+
+	<Protocols>
+	</Protocols>
+
+	<Memory>
+	</Memory>
+
+	<Parameters>
+	</Parameters>
+
+	<Script>
+		<Exe id="1" type="csharp">
+			<Value><![CDATA[[Project:SLC-AS-GQI-Files_1]]]></Value>
+			<!--<Param type="debug">true</Param>-->
+			<Param type="preCompile">true</Param>
+			<Param type="libraryName">GQI_Files</Param>
+			<Message></Message>
+		</Exe>
+	</Script>
+</DMSScript>
