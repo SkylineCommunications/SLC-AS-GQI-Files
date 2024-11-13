@@ -44,14 +44,16 @@ public class MyDataSource : IGQIDataSource, IGQIInputArguments, IGQIOnInit
 
 			foreach (FileInfo fileInfo in fileNames)
 			{
-				List<GQICell> cells = new List<GQICell>();
-				cells.Add(new GQICell() { Value = fileInfo.Name });
-				cells.Add(new GQICell() { Value = fileInfo.FullName });
-				cells.Add(new GQICell() { Value = fileInfo.CreationTime });
-				cells.Add(new GQICell() { Value = fileInfo.LastWriteTime });
-				cells.Add(new GQICell() { Value = Convert.ToDouble(fileInfo.Length), DisplayValue = Convert.ToDouble(fileInfo.Length) + " B" });
-				cells.Add(new GQICell() { Value = fileInfo.Extension });
-				cells.Add(new GQICell() { Value = fileInfo.IsReadOnly });
+				List<GQICell> cells = new List<GQICell>
+				{
+					new GQICell() { Value = fileInfo.Name },
+					new GQICell() { Value = fileInfo.FullName },
+					new GQICell() { Value = fileInfo.CreationTime.ToUniversalTime() },
+					new GQICell() { Value = fileInfo.LastWriteTime.ToUniversalTime() },
+					new GQICell() { Value = Convert.ToDouble(fileInfo.Length), DisplayValue = Convert.ToDouble(fileInfo.Length) + " B" },
+					new GQICell() { Value = fileInfo.Extension },
+					new GQICell() { Value = fileInfo.IsReadOnly },
+				};
 
 				rows.Add(new GQIRow(cells.ToArray()));
 			}
