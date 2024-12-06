@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using Skyline.DataMiner.Analytics.GenericInterface;
 
 [GQIMetaData(Name = "Files")]
@@ -8,7 +9,7 @@ public class MyDataSource : IGQIDataSource, IGQIInputArguments, IGQIOnInit
 {
 	private GQIStringArgument _path = new GQIStringArgument("Path") { IsRequired = true, DefaultValue = @"C:\Skyline DataMiner\Documents\DMA_COMMON_DOCUMENTS" };
 	private GQIStringArgument _searchPattern = new GQIStringArgument("Search Pattern") { IsRequired = false, DefaultValue = "*.*" };
-	private GQIBooleanArgument _recursive = new GQIBooleanArgument("Recursive") { DefaultValue = false};
+	private GQIBooleanArgument _recursive = new GQIBooleanArgument("Recursive") { DefaultValue = false };
 	private string path;
 	private string searchPattern;
 	private SearchOption recursive;
@@ -50,7 +51,7 @@ public class MyDataSource : IGQIDataSource, IGQIInputArguments, IGQIOnInit
 					new GQICell() { Value = fileInfo.FullName },
 					new GQICell() { Value = fileInfo.CreationTime.ToUniversalTime() },
 					new GQICell() { Value = fileInfo.LastWriteTime.ToUniversalTime() },
-					new GQICell() { Value = Convert.ToDouble(fileInfo.Length), DisplayValue = Convert.ToDouble(fileInfo.Length) + " B" },
+					new GQICell() { Value = Convert.ToDouble(fileInfo.Length), DisplayValue = GetByteSizeDisplayValue(fileInfo.Length)},
 					new GQICell() { Value = fileInfo.Extension },
 					new GQICell() { Value = fileInfo.IsReadOnly },
 				};
@@ -67,6 +68,21 @@ public class MyDataSource : IGQIDataSource, IGQIInputArguments, IGQIOnInit
 		{
 			HasNextPage = false,
 		};
+	}
+
+	public string GetByteSizeDisplayValue(long bytes)
+	{
+		string[] sizeUnits = { "B", "KB", "MB", "GB", "TB" };
+		int unitIndex = 0;
+		double size = bytes;
+
+		while (size >= 1024 && unitIndex < sizeUnits.Length - 1)
+		{
+			size /= 1024;
+			unitIndex++;
+		}
+
+		return $"{size:F3} {sizeUnits[unitIndex]}";
 	}
 
 	public OnArgumentsProcessedOutputArgs OnArgumentsProcessed(OnArgumentsProcessedInputArgs args)
