@@ -1,3 +1,6 @@
+# WARNING! DO NOT CHANGE THIS FILE.
+# If you wish to make adjustments based on the `auto-generated-catalog.yml` file, you can do so by creating a `catalog.yml` file in the root of your repository.
+# 
 # [Required]
 # Possible values for the Catalog item that can be deployed on a DataMiner System:
 #   - automationscript: If the Catalog item is a general-purpose DataMiner Automation script.
@@ -21,7 +24,7 @@
 #   - functiondefinition: If the Catalog item is a DataMiner function definition.
 #   - scriptedconnector: If the Catalog item is a DataMiner scripted connector.
 #   - bestpracticesanalyzer: If the Catalog item is a DataMiner Best Practices Analysis file.
-type: automationscript
+type: adhocdatasource
 # [Required]
 # The ID of the Catalog item.
 # All registered versions for the same ID are shown together in the Catalog.
@@ -37,7 +40,7 @@ id: aece1a06-64cf-424a-bfa3-64e431553659
 #   Max length: 100 characters.
 #   Cannot contain newlines.
 #   Cannot contain leading or trailing whitespace characters.
-title: GQI-Files
+title: Files
 # [Optional]
 # General information about the Catalog item.
 #   Max length: 100,000 characters
@@ -47,7 +50,7 @@ short_description: A generic GQI data source to get a file list from the DM serv
 # A valid URL that points to the source code.
 #   A valid URL
 #   Max length: 2048 characters
-source_code_url: https://github.com/SkylineCommunications/SLC-AS-GQI-Files
+source_code_url: https://github.com/SkylineCommunications/SLC-GQIDS-Files
 # [Optional]
 # A valid URL that points to documentation.
 #   A valid URL
