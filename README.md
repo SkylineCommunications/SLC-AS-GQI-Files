@@ -1,4 +1,4 @@
-# SLC-AS-GQI-Files
+# SLC-GQIDS-Files
 A generic GQI (Generic Query Interface) data source to get a file list from the DM server.
 
 The data source has these input arguments:
