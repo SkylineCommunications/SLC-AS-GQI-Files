@@ -16,7 +16,7 @@ on:
 jobs:
 
   CI:
-    uses: SkylineCommunications/_ReusableWorkflows/.github/workflows/Automation Master Workflow.yml@main
+    uses: SkylineCommunications/Low-Code-App-Editor/.github/workflows/Automation Master SDK Workflow.yml@main
     with:
       referenceName: ${{ github.ref_name }}
       runNumber: ${{ github.run_number }}
@@ -24,24 +24,11 @@ jobs:
       repository: ${{ github.repository }}
       owner: ${{ github.repository_owner }}
       sonarCloudProjectName: SkylineCommunications_SLC-AS-GQI-Files
+      catalog-identifier: 2004a9a2-9a4a-44f3-a1ba-1b82caf627cd
+      catalog-manifest-path: Documentation/CATALOG_PRIVATE_MANIFEST.yml
+      catalog-readme-path: Documentation/CATALOG_PRIVATE_README.md
     secrets:
       # The API-key: generated in the DCP Admin app (https://admin.dataminer.services/) as authentication for a certain DataMiner System.
       api-key: ${{ secrets.DATAMINER_DEPLOY_KEY }}
       sonarCloudToken: ${{ secrets.SONAR_TOKEN }}
-    
-  # # Optional 0 or More CD Jobs as needed
-  # CD:
-  #   if: github.ref_type == 'tag'
-  #   environment: production
-  #   name: CD
-  #   runs-on: ubuntu-latest
-  #   needs: CI
 
-  #   steps:
-  #     - uses: actions/checkout@v4
-        
-  #     - name: Install .NET Tools
-  #       run: dotnet tool install -g Skyline.DataMiner.CICD.Tools.DataMinerDeploy
-
-  #     - name: Deploy to DataMiner
-  #       run: dataminer-package-deploy from-catalog --artifact-id "${{ needs.CI.outputs.artifact-id }}" --dm-catalog-token ${{ secrets.DATAMINER_DEPLOY_KEY }}
