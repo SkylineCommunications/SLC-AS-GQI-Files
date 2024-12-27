@@ -27,7 +27,7 @@ type: 'Data Query'
 # If the ID is filled in but does not exist yet, a new Catalog item will be registered with this ID.
 # If the ID is filled in but does exist, properties of the item will be overwritten.
 #   Must be a valid GUID.
-id: '2004a9a2-9a4a-44f3-a1ba-1b82caf627cd'
+id: 'e998cc91-dc94-4d84-8d72-8daac9c8b123'
 
 # [Required] 
 # The human-friendly name of the Catalog item. 
